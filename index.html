@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<link rel="stylesheet" href="src/css/smusic.css"/>
+	<title>Inspht - Music</title>
+</head>
+<!--/************************************************************
+ *																*
+ * 						      							        *
+ *                        read.inspht.com						*
+ *       		  			                                    *  
+ * 																*
+**************************************************************-->
+<body>
+<div class="grid-music-container f-usn">
+    <div class="m-music-play-wrap">
+        <div class="u-cover"></div>
+        <div class="m-now-info">
+            <h1 class="u-music-title"><strong>标题</strong><small>歌手</small></h1>
+            <div class="m-now-controls">
+                <div class="u-control u-process">
+                    <span class="buffer-process"></span>
+                    <span class="current-process"></span>
+                </div>
+                <div class="u-control u-time">00:00/00:00</div>
+                <div class="u-control u-volume">
+                    <div class="volume-process" data-volume="0.50">
+                        <span class="volume-current"></span>
+                        <span class="volume-bar"></span>
+                        <span class="volume-event"></span>
+                    </div>
+                    <a class="volume-control"></a>
+                </div>
+            </div>
+            <div class="m-play-controls">
+                <a class="u-play-btn prev" title="上一曲"></a>
+                <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                <a class="u-play-btn next" title="下一曲"></a>
+                <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb">&nbsp;</div>
+    <div class="m-music-list-wrap"></div>
+</div>
+<script src="src/js/smusic.min.js"></script>
+<script>
+var musicList = [
+	{
+		title : '爱就爱了 (Live)',
+		singer : '李荣浩',
+		cover  : 'images/Maroon5.jpg',
+		src    : 'mp3/李荣浩 - 爱就爱了 (Live).flac'
+	},
+	{
+		title : '春暖花开奔你而来 (抖音版)',
+		singer : '陈丙',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/陈丙 - 春暖花开奔你而来 (抖音版).mp3'
+	},
+	{
+		title : '陈柏宇-你瞒我瞒',
+		singer : '陈柏宇',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/陈柏宇-你瞒我瞒.mp3'
+	},		
+	{
+		title : '白小柯-电灯胆',
+		singer : '白小柯',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/白小柯-电灯胆（DJ抖音版）.mp3'
+	},		
+	{
+		title : '陈慧琳-记事本',
+		singer : '陈慧琳',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/陈慧琳-记事本.mp3'
+	},
+	{
+		title : '陈意涵-最美的情书',
+		singer : '陈意涵',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/陈意涵-最美的情书.mp3'
+	},	
+	{
+		title : 'BWO - Sunshine In The Rain',
+		singer : 'BWO',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/BWO - Sunshine In The Rain.mp3'
+	},
+	{
+		title : 'Cagnet (キャグネット) - Hear Me Cry',
+		singer : 'Cagnet (キャグネット)',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Cagnet (キャグネット) - Hear Me Cry.mp3'
+	},
+	{
+		title : 'Đông Nhi - Ngot Ngao',
+		singer : 'Đông Nhi',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Đông Nhi - Ngot Ngao.mp3'
+	},
+	{
+		title : 'Lenka - Blue Skies',
+		singer : 'Lenka',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Lenka - Blue Skies.mp3'
+	},
+	{
+		title : 'Lenka - Trouble Is A Friend',
+		singer : 'Lenka',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Lenka - Trouble Is A Friend.mp3'
+	},	
+	{
+		title : 'Nurbek & Dia - Altynai',
+		singer : 'Nurbek & Dia',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Nurbek & Dia - Altynai.mp3'
+	},
+	{
+		title : 'SING女团 - 飞过时间的海',
+		singer : 'SING女团',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/SING女团 - 飞过时间的海.mp3'
+	},
+	{
+		title : 'SWIN-S - 只因你太美',
+		singer : 'SWIN-S',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/SWIN-S - 只因你太美.mp3'
+	},	
+	{
+		title : 'Tamas Wells - Valder Fields',
+		singer : 'Tamas Wells',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Tamas Wells - Valder Fields.mp3'
+	},
+	{
+		title : 'Tanir _ Tyomcha - Да да да (Jarico Remix)',
+		singer : 'Tanir _ Tyomcha',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/Tanir _ Tyomcha - Да да да (Jarico Remix).mp3'
+	},
+	{
+		title : '阿桑 - 一直很安静',
+		singer : '阿桑',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/阿桑 - 一直很安静.mp3'
+	},
+	{
+		title : '程响-怎么能忘了',
+		singer : '程响',
+		cover  : 'images/yangcong.jpg',
+		src    : '程响-怎么能忘了.mp3'
+	},
+	{
+		title : '程响-修女的伤',
+		singer : '程响',
+		cover  : 'images/yangcong.jpg',
+		src    : '程响-修女的伤.mp3'
+	},
+	{
+		title : '程响-不要对我说（DJ伟然Eurodance Version Mix',
+		singer : '程响',
+		cover  : 'images/yangcong.jpg',
+		src    : '程响-不要对我说（DJ伟然Eurodance Version Mix）.mp3'
+	},
+	{
+		title : '丁当-漂洋过海来看你',
+		singer : '丁当',
+		cover  : 'images/yangcong.jpg',
+		src    : '丁当-漂洋过海来看你.mp3'
+	},	
+	{
+		title : '贯诗钦-小爱',
+		singer : '贯诗钦',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/贯诗钦-小爱.mp3'
+	},
+	{
+		title : '나몰라 패밀리 TKO (Namolla Family TKO) _ 泰仁 (태인) - 사랑이 그렇게 쉬워 (爱情如此简单)',
+		singer : '나몰라 패밀리 TKO (Namolla Family TKO)',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/나몰라 패밀리 TKO (Namolla Family TKO) _ 泰仁 (태인) - 사랑이 그렇게 쉬워 (爱情如此简单).mp3'
+	},
+	{
+		title : '胡夏 - 为你我受冷风吹 (Live)',
+		singer : '胡夏',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/胡夏 - 为你我受冷风吹 (Live).mp3'
+	},
+	{
+		title : '吉克隽逸 - 现在的我',
+		singer : '吉克隽逸',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/吉克隽逸 - 现在的我.mp3'
+	},
+	{
+		title : '建邺城',
+		singer : 'Play',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/建邺城.mp3'
+	},	
+	{
+		title : '李毓芬 - 是我不够好',
+		singer : '李毓芬',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/李毓芬 - 是我不够好.mp3'
+	},	
+	{
+		title : '陈雪凝-你的酒馆对我打了烊',
+		singer : '陈雪凝',
+		cover  : 'images/yangcong.jpg',
+		src    : 'mp3/陈雪凝-你的酒馆对我打了烊.mp3'
+	}
+];
+new SMusic({
+	musicList:musicList
+});
+</script>
+</body>
+</html>
